@@ -1,0 +1,25 @@
+<div class="m-4 flex flex-row">
+  <div class="w-[50%] flex flex-col">
+    <mat-form-field class="w-[30%]">
+      <mat-label>Target string length</mat-label>
+      <input matInput [formControl]="form" />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      class="w-[20%]"
+      (click)="generateStrings.emit()"
+      [disabled]="!form.valid"
+    >
+      GENERATE STRINGS
+    </button>
+  </div>
+  <div class="w-[50%]">
+    <p>Total strings found: {{ list.length }}</p>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let string of list; let i = index"
+        >{{ i + 1 }}: {{ string }}</mat-list-item
+      >
+    </mat-list>
+  </div>
+</div>
